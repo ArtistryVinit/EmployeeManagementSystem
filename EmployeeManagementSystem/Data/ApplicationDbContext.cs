@@ -25,6 +25,10 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<LeaveType>leaveTypes{ get; set; }
 
+        public DbSet<Country>countries{ get; set; }
+
+        public DbSet<City>cities{ get; set; }
+
 
     }
 }
