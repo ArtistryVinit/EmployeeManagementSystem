@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\data\\migrations\\20250203111822_applicationsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\data\\migrations\\20250203111822_applicationsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\systemcodedetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\systemcodedetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\systemcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\systemcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\leavetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\leavetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EmployeesController.cs",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
-              "RelativeToolTip": "EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAgwCsAAAAJAAAAAAAAAA==",
+              "Title": "20250203111822_applicationsettings.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\Migrations\\20250203111822_applicationsettings.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Data\\Migrations\\20250203111822_applicationsettings.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\Migrations\\20250203111822_applicationsettings.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Data\\Migrations\\20250203111822_applicationsettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T09:01:09.473Z",
+              "WhenOpened": "2025-02-03T11:18:25.441Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "EmployeeManagementSystem\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-03T04:56:32.756Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACwBAAAAAAAAAAAAADsBAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-02T06:07:52.394Z"
+              "DocumentIndex": 6,
+              "Title": "LeaveType.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\LeaveType.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\LeaveType.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\LeaveType.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\LeaveType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:47:26.45Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Employees\\Index.cshtml",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\Employees\\Index.cshtml",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Employees\\Index.cshtml",
-              "RelativeToolTip": "EmployeeManagementSystem\\Views\\Employees\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-02T03:18:02.14Z"
+              "Title": "Bank.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Bank.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\Bank.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Bank.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\Bank.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:42:45.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SystemCodeDetail.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\SystemCodeDetail.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\SystemCodeDetail.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\SystemCodeDetail.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\SystemCodeDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:37:39.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SystemCode.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\SystemCode.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\SystemCode.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\SystemCode.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\SystemCode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:29:05.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Designation.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Designation.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\Designation.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Designation.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\Designation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:24:23.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wBkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:22:43.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Department.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Department.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\Department.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\Department.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Models\\Department.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T10:20:11.937Z"
             }
           ]
         }
