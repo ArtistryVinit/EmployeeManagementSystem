@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
               "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAgwDEAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwCsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-03T09:01:09.473Z",
               "EditorCaption": ""
@@ -75,8 +75,7 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Views\\Employees\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-02T03:18:02.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T03:18:02.14Z"
             }
           ]
         }

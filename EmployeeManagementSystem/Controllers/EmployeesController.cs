@@ -44,10 +44,10 @@ namespace EmployeeManagementSystem.Controllers
         }
 
         // GET: Employees/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         // POST: Employees/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
