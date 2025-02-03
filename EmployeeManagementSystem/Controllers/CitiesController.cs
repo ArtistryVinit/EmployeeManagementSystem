@@ -10,22 +10,23 @@ using EmployeeManagementSystem.Models;
 
 namespace EmployeeManagementSystem.Controllers
 {
-    public class SystemCodesController : Controller
+    public class CitiesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SystemCodesController(ApplicationDbContext context)
+        public CitiesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: SystemCodes
+        // GET: Cities
         public async Task<IActionResult> Index()
         {
-            return View(await _context.SystemCodes.ToListAsync());
+            var applicationDbContext = _context.cities.Include(c => c.Country);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: SystemCodes/Details/5
+        // GET: Cities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,38 +34,40 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes
+            var city = await _context.cities
+                .Include(c => c.Country)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (systemCode == null)
+            if (city == null)
             {
                 return NotFound();
             }
 
-            return View(systemCode);
+            return View(city);
         }
 
-        // GET: SystemCodes/Create
+        // GET: Cities/Create
         public IActionResult Create()
         {
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name");
             return View();
         }
 
-        // POST: SystemCodes/Create
-        
+        // POST: Cities/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)
+        public async Task<IActionResult> Create(City city)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(systemCode);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(systemCode);
+
+            _context.Add(city);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name", city.CountryId);
+            return View(city);
         }
 
-        // GET: SystemCodes/Edit/5
+        // GET: Cities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,21 +75,22 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes.FindAsync(id);
-            if (systemCode == null)
+            var city = await _context.cities.FindAsync(id);
+            if (city == null)
             {
                 return NotFound();
             }
-            return View(systemCode);
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Id", city.CountryId);
+            return View(city);
         }
 
-        // POST: SystemCodes/Edit/5
-        
+        // POST: Cities/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,CountryId")] City city)
         {
-            if (id != systemCode.Id)
+            if (id != city.Id)
             {
                 return NotFound();
             }
@@ -95,12 +99,12 @@ namespace EmployeeManagementSystem.Controllers
             {
                 try
                 {
-                    _context.Update(systemCode);
+                    _context.Update(city);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SystemCodeExists(systemCode.Id))
+                    if (!CityExists(city.Id))
                     {
                         return NotFound();
                     }
@@ -111,10 +115,11 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(systemCode);
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Id", city.CountryId);
+            return View(city);
         }
 
-        // GET: SystemCodes/Delete/5
+        // GET: Cities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -122,34 +127,35 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes
+            var city = await _context.cities
+                .Include(c => c.Country)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (systemCode == null)
+            if (city == null)
             {
                 return NotFound();
             }
 
-            return View(systemCode);
+            return View(city);
         }
 
-        // POST: SystemCodes/Delete/5
+        // POST: Cities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var systemCode = await _context.SystemCodes.FindAsync(id);
-            if (systemCode != null)
+            var city = await _context.cities.FindAsync(id);
+            if (city != null)
             {
-                _context.SystemCodes.Remove(systemCode);
+                _context.cities.Remove(city);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SystemCodeExists(int id)
+        private bool CityExists(int id)
         {
-            return _context.SystemCodes.Any(e => e.Id == id);
+            return _context.cities.Any(e => e.Id == id);
         }
     }
 }

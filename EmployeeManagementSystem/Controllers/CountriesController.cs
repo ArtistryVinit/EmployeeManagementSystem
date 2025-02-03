@@ -10,22 +10,22 @@ using EmployeeManagementSystem.Models;
 
 namespace EmployeeManagementSystem.Controllers
 {
-    public class SystemCodesController : Controller
+    public class CountriesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SystemCodesController(ApplicationDbContext context)
+        public CountriesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: SystemCodes
+        // GET: Countries
         public async Task<IActionResult> Index()
         {
-            return View(await _context.SystemCodes.ToListAsync());
+            return View(await _context.countries.ToListAsync());
         }
 
-        // GET: SystemCodes/Details/5
+        // GET: Countries/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,38 +33,38 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes
+            var country = await _context.countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (systemCode == null)
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(systemCode);
+            return View(country);
         }
 
-        // GET: SystemCodes/Create
+        // GET: Countries/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: SystemCodes/Create
+        // POST: Countries/Create
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)
+        public async Task<IActionResult> Create([Bind("Id,Code,Name,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] Country country)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(systemCode);
+                _context.Add(country);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(systemCode);
+            return View(country);
         }
 
-        // GET: SystemCodes/Edit/5
+        // GET: Countries/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,21 +72,21 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes.FindAsync(id);
-            if (systemCode == null)
+            var country = await _context.countries.FindAsync(id);
+            if (country == null)
             {
                 return NotFound();
             }
-            return View(systemCode);
+            return View(country);
         }
 
-        // POST: SystemCodes/Edit/5
+        // POST: Countries/Edit/5
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] Country country)
         {
-            if (id != systemCode.Id)
+            if (id != country.Id)
             {
                 return NotFound();
             }
@@ -95,12 +95,12 @@ namespace EmployeeManagementSystem.Controllers
             {
                 try
                 {
-                    _context.Update(systemCode);
+                    _context.Update(country);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SystemCodeExists(systemCode.Id))
+                    if (!CountryExists(country.Id))
                     {
                         return NotFound();
                     }
@@ -111,10 +111,10 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(systemCode);
+            return View(country);
         }
 
-        // GET: SystemCodes/Delete/5
+        // GET: Countries/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -122,34 +122,34 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
-            var systemCode = await _context.SystemCodes
+            var country = await _context.countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (systemCode == null)
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(systemCode);
+            return View(country);
         }
 
-        // POST: SystemCodes/Delete/5
+        // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var systemCode = await _context.SystemCodes.FindAsync(id);
-            if (systemCode != null)
+            var country = await _context.countries.FindAsync(id);
+            if (country != null)
             {
-                _context.SystemCodes.Remove(systemCode);
+                _context.countries.Remove(country);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SystemCodeExists(int id)
+        private bool CountryExists(int id)
         {
-            return _context.SystemCodes.Any(e => e.Id == id);
+            return _context.countries.Any(e => e.Id == id);
         }
     }
 }
