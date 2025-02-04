@@ -19,7 +19,7 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<SystemCode>SystemCodes{ get; set; }
 
-        public DbSet<SystemCodeDetail>systemCodeDetails{ get; set; }
+        public DbSet<SystemCodeDetail> systemCodeDetails { get; set; }
 
         public DbSet<Bank>banks{ get; set; }
 
