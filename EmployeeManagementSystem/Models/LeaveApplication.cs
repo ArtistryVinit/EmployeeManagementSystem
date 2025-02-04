@@ -1,6 +1,6 @@
 ﻿namespace EmployeeManagementSystem.Models
 {
-    public class LeaveApplication
+    public class LeaveApplication : ApprovalActivity
     {
         public int id { get; set; }
 
@@ -23,5 +23,11 @@
         public string? Attachment {  get; set; }
 
         public string Description { get; set; }
+
+        public int StatusId {  get; set; }
+
+        public SystemCodeDetail Status {  get; set; }
+
+      
     }
 }

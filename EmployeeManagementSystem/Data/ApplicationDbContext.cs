@@ -29,6 +29,7 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<City>cities{ get; set; }
 
+        public DbSet<LeaveApplication> leaveApplications{ get; set; }
 
     }
 }
