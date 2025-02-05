@@ -27,6 +27,5 @@
         public int StatusId {  get; set; }
 
         public SystemCodeDetail Status {  get; set; }
-        public object Employee { get; internal set; }
     }
 }

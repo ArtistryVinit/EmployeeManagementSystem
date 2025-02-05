@@ -283,6 +283,10 @@ namespace EmployeeManagementSystem.Data.Migrations
                     b.Property<int>("DurationId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Employee")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
