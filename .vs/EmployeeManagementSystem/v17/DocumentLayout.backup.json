@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\leaveapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\leaveapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\controllers\\leaveapplicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controllers\\leaveapplicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\leaveapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\models\\leaveapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\data\\migrations\\20250204053117_leaveapplications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\controllers\\leaveapplicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controllers\\leaveapplicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7C6FD23D-ECFD-4E78-BED7-E79F1B57476B}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|c:\\users\\vinit\\source\\repos\\employeemanagementsystem\\employeemanagementsystem\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,15 +98,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
-              "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAIwA4AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-05T05:27:29.119Z"
+              "DocumentIndex": 1,
+              "Title": "LeaveApplicationsController.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T10:11:25.859Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -146,7 +147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "20250204053117_LeaveApplications.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\Migrations\\20250204053117_LeaveApplications.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Data\\Migrations\\20250204053117_LeaveApplications.cs",
@@ -158,44 +159,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "LeaveApplication.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\LeaveApplication.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Models\\LeaveApplication.cs",
               "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Models\\LeaveApplication.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\Models\\LeaveApplication.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAADwvxwAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-04T05:06:56.459Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA5wA8AAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T10:22:43.853Z"
+              "WhenOpened": "2025-02-03T10:22:43.853Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LeaveApplicationsController.cs",
-              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
-              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
-              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
-              "RelativeToolTip": "EmployeeManagementSystem\\Controllers\\LeaveApplicationsController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAUwCsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T04:29:23.21Z"
+              "DocumentIndex": 10,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
+              "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Edit.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAIwA4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T05:27:29.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "20250205063941_app.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Data\\Migrations\\20250205063941_app.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Data\\Migrations\\20250205063941_app.cs",
@@ -219,7 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Views\\Shared\\_Layout.cshtml",
@@ -251,7 +254,8 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Details.cshtml",
               "ViewState": "AgIAAFsAAAAAAAAAAAAIwGkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-05T05:27:13.217Z"
+              "WhenOpened": "2025-02-05T05:27:13.217Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -299,7 +303,8 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Delete.cshtml",
               "ViewState": "AgIAAFwAAAAAAAAAAAAIwGoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-05T05:26:42.054Z"
+              "WhenOpened": "2025-02-05T05:26:42.054Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -311,7 +316,8 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Index.cshtml",
               "ViewState": "AgIAACcAAAAAAAAAAAAAAHEAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-05T05:27:46.221Z"
+              "WhenOpened": "2025-02-05T05:27:46.221Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -323,7 +329,8 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Views\\LeaveApplications\\Create.cshtml",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-05T04:46:50.044Z"
+              "WhenOpened": "2025-02-05T04:46:50.044Z",
+              "EditorCaption": ""
             }
           ]
         }

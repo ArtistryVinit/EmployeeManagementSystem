@@ -283,10 +283,6 @@ namespace EmployeeManagementSystem.Data.Migrations
                     b.Property<int>("DurationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Employee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -314,6 +310,8 @@ namespace EmployeeManagementSystem.Data.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("DurationId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("LeaveTypeId");
 
@@ -650,6 +648,12 @@ namespace EmployeeManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EmployeeManagementSystem.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EmployeeManagementSystem.Models.LeaveType", "LeaveType")
                         .WithMany()
                         .HasForeignKey("LeaveTypeId")
@@ -663,6 +667,8 @@ namespace EmployeeManagementSystem.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Duration");
+
+                    b.Navigation("Employee");
 
                     b.Navigation("LeaveType");
 

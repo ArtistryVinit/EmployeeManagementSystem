@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.Models;
-using EmployeeManagementSystem.Data.Migrations;
 
 namespace EmployeeManagementSystem.Controllers
 {
@@ -23,11 +22,7 @@ namespace EmployeeManagementSystem.Controllers
         // GET: LeaveApplications
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.leaveApplications
-              .Include(l => l.Duration)
-              .Include(l => l.Employee)
-              .Include(l => l.LeaveType)
-              .Include(l => l.Status);
+            var applicationDbContext = _context.leaveApplications.Include(l => l.Duration).Include(l => l.Employee).Include(l => l.LeaveType).Include(l => l.Status);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -41,7 +36,7 @@ namespace EmployeeManagementSystem.Controllers
 
             var leaveApplication = await _context.leaveApplications
                 .Include(l => l.Duration)
-                .Include(l => l.EmployeeId)
+                .Include(l => l.Employee)
                 .Include(l => l.LeaveType)
                 .Include(l => l.Status)
                 .FirstOrDefaultAsync(m => m.id == id);
@@ -57,14 +52,15 @@ namespace EmployeeManagementSystem.Controllers
         public IActionResult Create()
         {
             ViewData["DurationId"] = new SelectList(_context.systemCodeDetails, "Id", "Id");
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Address");
             ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Id");
             ViewData["StatusId"] = new SelectList(_context.systemCodeDetails, "Id", "Id");
             return View();
         }
 
         // POST: LeaveApplications/Create
-        
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,EmployeeId,NoOfDays,StartDate,EndDate,DurationId,LeaveTypeId,Attachment,Description,StatusId,ApprovedById,ApprovedOn,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] LeaveApplication leaveApplication)
@@ -76,7 +72,7 @@ namespace EmployeeManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DurationId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.DurationId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id", leaveApplication.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Address", leaveApplication.EmployeeId);
             ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Id", leaveApplication.LeaveTypeId);
             ViewData["StatusId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.StatusId);
             return View(leaveApplication);
@@ -96,14 +92,15 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
             ViewData["DurationId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.DurationId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id", leaveApplication.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Address", leaveApplication.EmployeeId);
             ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Id", leaveApplication.LeaveTypeId);
             ViewData["StatusId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.StatusId);
             return View(leaveApplication);
         }
 
         // POST: LeaveApplications/Edit/5
-       
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,EmployeeId,NoOfDays,StartDate,EndDate,DurationId,LeaveTypeId,Attachment,Description,StatusId,ApprovedById,ApprovedOn,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] LeaveApplication leaveApplication)
@@ -134,7 +131,7 @@ namespace EmployeeManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DurationId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.DurationId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id", leaveApplication.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Address", leaveApplication.EmployeeId);
             ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Id", leaveApplication.LeaveTypeId);
             ViewData["StatusId"] = new SelectList(_context.systemCodeDetails, "Id", "Id", leaveApplication.StatusId);
             return View(leaveApplication);
@@ -150,6 +147,7 @@ namespace EmployeeManagementSystem.Controllers
 
             var leaveApplication = await _context.leaveApplications
                 .Include(l => l.Duration)
+                .Include(l => l.Employee)
                 .Include(l => l.LeaveType)
                 .Include(l => l.Status)
                 .FirstOrDefaultAsync(m => m.id == id);

@@ -6,6 +6,8 @@
 
         public int EmployeeId { get; set; }
 
+        public Employee Employee { get; set; }
+
         public int NoOfDays { get; set; }
 
         public DateTime StartDate { get; set; }
