@@ -44,7 +44,7 @@ namespace EmployeeManagementSystem.Controllers
                 .Include(l => l.EmployeeId)
                 .Include(l => l.LeaveType)
                 .Include(l => l.Status)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (leaveApplication == null)
             {
                 return NotFound();
@@ -108,7 +108,7 @@ namespace EmployeeManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,EmployeeId,NoOfDays,StartDate,EndDate,DurationId,LeaveTypeId,Attachment,Description,StatusId,ApprovedById,ApprovedOn,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] LeaveApplication leaveApplication)
         {
-            if (id != leaveApplication.Id)
+            if (id != leaveApplication.id)
             {
                 return NotFound();
             }
@@ -122,7 +122,7 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LeaveApplicationExists(leaveApplication.Id))
+                    if (!LeaveApplicationExists(leaveApplication.id))
                     {
                         return NotFound();
                     }
@@ -152,7 +152,7 @@ namespace EmployeeManagementSystem.Controllers
                 .Include(l => l.Duration)
                 .Include(l => l.LeaveType)
                 .Include(l => l.Status)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (leaveApplication == null)
             {
                 return NotFound();
@@ -178,7 +178,7 @@ namespace EmployeeManagementSystem.Controllers
 
         private bool LeaveApplicationExists(int id)
         {
-            return _context.leaveApplications.Any(e => e.Id == id);
+            return _context.leaveApplications.Any(e => e.id == id);
         }
     }
 }
