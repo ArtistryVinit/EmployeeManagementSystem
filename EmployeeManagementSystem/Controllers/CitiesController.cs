@@ -53,7 +53,7 @@ namespace EmployeeManagementSystem.Controllers
         }
 
         // POST: Cities/Create
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(City city)
@@ -80,12 +80,12 @@ namespace EmployeeManagementSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Id", city.CountryId);
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name", city.CountryId);
             return View(city);
         }
 
         // POST: Cities/Edit/5
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,CountryId")] City city)
@@ -115,7 +115,7 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Id", city.CountryId);
+            ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name", city.CountryId);
             return View(city);
         }
 

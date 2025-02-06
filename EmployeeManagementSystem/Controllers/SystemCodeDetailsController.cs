@@ -62,7 +62,6 @@ namespace EmployeeManagementSystem.Controllers
             _context.Add(systemCodeDetail);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
             ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Description", systemCodeDetail.SystemCodeId);
             return View(systemCodeDetail);
         }
@@ -80,7 +79,7 @@ namespace EmployeeManagementSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Id", systemCodeDetail.SystemCodeId);
+            ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Description", systemCodeDetail.SystemCodeId);
             return View(systemCodeDetail);
         }
 
@@ -88,7 +87,7 @@ namespace EmployeeManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SystemCodeId,Code,Description,OrderNo,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCodeDetail systemCodeDetail)
+        public async Task<IActionResult> Edit(int id,  SystemCodeDetail systemCodeDetail)
         {
             if (id != systemCodeDetail.Id)
             {
@@ -115,7 +114,7 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Id", systemCodeDetail.SystemCodeId);
+            ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Description", systemCodeDetail.SystemCodeId);
             return View(systemCodeDetail);
         }
 
