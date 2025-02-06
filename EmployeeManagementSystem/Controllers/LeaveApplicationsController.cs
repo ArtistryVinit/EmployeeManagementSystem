@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.Models;
-
+dnflkfdklklddlkjnkldfnlkdnkldnelknl
 namespace EmployeeManagementSystem.Controllers
 {
     public class LeaveApplicationsController : Controller
