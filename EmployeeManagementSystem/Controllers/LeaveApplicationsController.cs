@@ -52,6 +52,60 @@ namespace EmployeeManagementSystem.Controllers
             return View(leaveApplication);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ApproveLeave(int? id)
+        {
+                var leaveApplication = await _context.leaveApplications
+                .Include(l => l.Duration)
+                .Include(l => l.Employee)
+                .Include(l => l.LeaveType)
+                .Include(l => l.Status)
+                .FirstOrDefaultAsync(m => m.id == id);
+
+            if (leaveApplication == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["DurationId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(y =>y.SystemCode.Code == "LeaveDuration"), "Id", "Description");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "FullName");
+            ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Name");
+
+            return View(leaveApplication);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveLeave(int? id,LeaveApplication leave)
+        {
+            var approvedstatus = _context.systemCodeDetails.Include(x => x.SystemCode).Where(y => y.SystemCode.Code == "LeaveApprovalStatus" && y.Code == "Approved").FirstOrDefault();
+
+            var leaveApplication = await _context.leaveApplications
+            .Include(l => l.Duration)
+            .Include(l => l.Employee)
+            .Include(l => l.LeaveType)
+            .Include(l => l.Status)
+            .FirstOrDefaultAsync(m => m.id == id);
+
+            if (leaveApplication == null)
+            {
+                return NotFound();
+            }
+
+            leaveApplication.ApprovedOn = DateTime.Now;
+            leaveApplication.ApprovedById = "Vinit Ahir";
+            leaveApplication.StatusId = approvedstatus.Id;
+
+            _context.Update(leaveApplication);
+            await _context.SaveChangesAsync();
+
+            ViewData["DurationId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(y => y.SystemCode.Code == "LeaveDuration"), "Id", "Description");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "FullName");
+            ViewData["LeaveTypeId"] = new SelectList(_context.leaveTypes, "Id", "Name");
+
+            return View(leaveApplication);
+        }
+
+
         //    // GET: LeaveApplications/Create
         //    public IActionResult Create()
         //    {
