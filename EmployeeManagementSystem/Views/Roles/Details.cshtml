@@ -1,0 +1,17 @@
+﻿@model EmployeeManagementSystem.ViewModels.RolesViewModel
+
+@{
+    ViewData["Title"] = "Role Details";
+}
+
+<h2>Role Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>Role Name: @Model.RoleName</h4>
+        <p><strong>Role ID:</strong> @Model.Id</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Role</a>

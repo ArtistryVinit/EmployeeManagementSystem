@@ -24,6 +24,7 @@ namespace EmployeeManagementSystem.Controllers
             return View(roles);
         }
 
+        //Roller create method
         [HttpGet]
         public IActionResult Create()
         {
@@ -73,6 +74,7 @@ namespace EmployeeManagementSystem.Controllers
             return View(model);
         }
 
+        //Roller Edit method
 
         [HttpGet]
         public async Task<ActionResult> Edit(string id)
@@ -136,6 +138,89 @@ namespace EmployeeManagementSystem.Controllers
             }
 
             return View(model);
+        }
+
+        //Delete Method
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _logger.LogError("Delete Role: Role ID is NULL.");
+                return NotFound();
+            }
+
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                _logger.LogError($"Delete Role: Role with ID '{id}' not found.");
+                return NotFound();
+            }
+
+            var model = new RolesViewModel
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                _logger.LogError($"Delete Role: Role with ID '{id}' not found.");
+                return NotFound();
+            }
+
+            var result = await _roleManager.DeleteAsync(role);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "Role deleted successfully!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View("Delete", new RolesViewModel { Id = id, RoleName = role.Name });
+        }
+
+        //Roles Details Method
+
+        [HttpGet]
+        public async Task<IActionResult> Details(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _logger.LogError("Details Role: Role ID is NULL.");
+                return NotFound();
+            }
+
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                _logger.LogError($"Details Role: Role with ID '{id}' not found.");
+                return NotFound();
+            }
+
+            var model = new RolesViewModel
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+            return View(model); // Let ASP.NET locate Details.cshtml automatically
         }
 
 

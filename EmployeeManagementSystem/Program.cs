@@ -24,6 +24,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+//razor pages property views 
+builder.Services.AddControllersWithViews();
+
+
 // Authentication & Authorization
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
