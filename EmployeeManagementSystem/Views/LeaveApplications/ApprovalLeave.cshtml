@@ -4,11 +4,13 @@
     ViewData["Title"] = "Approve Leave";
 }
 
+<form asp-action="ApprovalLeave">
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Approve Leave Applications Details</h3>
     </div>
     <div class="card-body">
+
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -65,12 +67,12 @@
 </div>
 
 <div class="row">
-    <form asp-action="ApprovalLeave">
         <div class="col-md-12">
             <div class="card-footer">
                 <div class="clearfix">
                     <a asp-action="Index" class="btn btn-danger push-left">Back to List</a>
-                    <a asp-action="Edit" class="btn btn-primary push-right" asp-route-id="@Model.id">Approve Leave Applications</a>
+                    <input type="submit" value="Approve Leave Application" class="btn btn-primary" />
+                    
                 </div>
             </div>
         </div>

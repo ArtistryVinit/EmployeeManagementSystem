@@ -1,0 +1,120 @@
+﻿using EmployeeManagementSystem.Data;
+using EmployeeManagementSystem.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
+
+namespace EmployeeManagementSystem.Controllers
+{
+    public class RolesController : Controller
+    {
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ILogger<RolesController> _logger;
+
+        public RolesController(RoleManager<IdentityRole> roleManager, ILogger<RolesController> logger)
+        {
+            this._roleManager = roleManager;
+            this._logger = logger;
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            return View(roles);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(RolesViewModel model)
+        {
+            _logger.LogInformation("Checking if RoleManager is initialized.");
+            if (_roleManager == null)
+            {
+                _logger.LogError("RoleManager is NULL.");
+                return View(model);
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Check if role already exists
+                if (await _roleManager.RoleExistsAsync(model.RoleName))
+                {
+                    ModelState.AddModelError("", "Role already exists.");
+                    return View(model);
+                }
+
+                IdentityRole role = new IdentityRole
+                {
+                    Name = model.RoleName
+                };
+
+                var result = await _roleManager.CreateAsync(role);
+
+                if (result.Succeeded)
+                {
+                    TempData["SuccessMessage"] = "Role created successfully!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+        }
+
+            }
+}
+
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(string id)
+        //{
+        //    if (string.IsNullOrEmpty(id))
+        //    {
+        //        return NotFound(); // Handle case where id is null or empty
+        //    }
+
+        //    var result = await _roleManager.FindByIdAsync(id);
+
+        //    if (result == null)
+        //    {
+        //        return NotFound(); // Handle case where role is not found
+        //    }
+
+        //    return View(result); // Pass the result to the view
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(IdentityRole model)
+        //{
+        //    var role = await _roleManager.FindByIdAsync(model.Id);
+
+        //    if (role == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    role.Name = model.Name;
+        //    var result = await _roleManager.UpdateAsync(role);
+
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("Index"); // Redirect after successful update
+        //    }
+
+        //    return View(model); // Return the same view if there are errors
+        //}
+
+
+
+
