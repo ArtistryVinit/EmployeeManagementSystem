@@ -73,47 +73,74 @@ namespace EmployeeManagementSystem.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _logger.LogError("Edit Role: Role ID is NULL.");
+                return NotFound();
             }
+
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                _logger.LogError($"Edit Role: Role with ID '{id}' not found.");
+                return NotFound();
+            }
+
+            var model = new RolesViewModel
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(RolesViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var role = await _roleManager.FindByIdAsync(model.Id);
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            if (await _roleManager.RoleExistsAsync(model.RoleName) && role.Name != model.RoleName)
+            {
+                ModelState.AddModelError("", "Role name already exists.");
+                return View(model);
+            }
+
+            role.Name = model.RoleName;
+            var result = await _roleManager.UpdateAsync(role);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "Role updated successfully!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+
+    }
 }
-
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(string id)
-        //{
-        //    if (string.IsNullOrEmpty(id))
-        //    {
-        //        return NotFound(); // Handle case where id is null or empty
-        //    }
-
-        //    var result = await _roleManager.FindByIdAsync(id);
-
-        //    if (result == null)
-        //    {
-        //        return NotFound(); // Handle case where role is not found
-        //    }
-
-        //    return View(result); // Pass the result to the view
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(IdentityRole model)
-        //{
-        //    var role = await _roleManager.FindByIdAsync(model.Id);
-
-        //    if (role == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    role.Name = model.Name;
-        //    var result = await _roleManager.UpdateAsync(role);
-
-        //    if (result.Succeeded)
-        //    {
-        //        return RedirectToAction("Index"); // Redirect after successful update
-        //    }
-
-        //    return View(model); // Return the same view if there are errors
-        //}
 
 
 

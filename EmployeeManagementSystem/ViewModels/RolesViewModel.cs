@@ -3,7 +3,7 @@
     public class RolesViewModel
     {
      
-            //public string RoleId { get; set; }  // IdentityRole uses a string ID
+            public string? Id { get; set; }  // IdentityRole uses a string ID
             public string RoleName { get; set; }
 
     }

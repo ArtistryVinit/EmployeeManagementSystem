@@ -50,7 +50,7 @@
 }
  *@
 
-@* @model EmployeeManagementSystem.ViewModels.RolesViewModel
+ @model EmployeeManagementSystem.ViewModels.RolesViewModel
 
 @{
 	ViewData["Title"] = "Update Role";
@@ -66,8 +66,8 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-12">
-				<form asp-action="Edit">
-					<input type="hidden" asp-for="RoleId" />
+				<form asp-action="Edit" method="post">
+					<input type="hidden" asp-for="Id" />
 
 					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -100,4 +100,4 @@
 	}
 }
 
- *@ 
+ 
