@@ -1,8 +1,10 @@
 ﻿using EmployeeManagementSystem.Data;
+using EmployeeManagementSystem.Models;
 using EmployeeManagementSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagementSystem.Controllers
@@ -10,14 +12,14 @@ namespace EmployeeManagementSystem.Controllers
     //[Authorize]
     public class UsersController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<UsersController> _logger;
 
 
-        public UsersController(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager,
+        public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager,
             ILogger<UsersController> logger)
         {
 
@@ -43,48 +45,51 @@ namespace EmployeeManagementSystem.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-           
-            
-            // var users = await _context.Users.ToListAsync();
-            // Debugging: Log the number of users to check if data is coming through
-            //_logger.LogInformation($"Number of users retrieved: {users.Count}");
-            
-
+            ViewData["RoleId"] = new SelectList(await _roleManager.Roles.ToListAsync(), "Id", "Name");
             return View();
         }
+
 
         [HttpPost]
         public async Task<ActionResult> Create(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Create a new IdentityUser object
-                IdentityUser user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = model.UserName,
+                    FirstName = model.FirstName,
+                    MiddleName = model.MiddleName, // Fixed from LastName
+                    LastName = model.LastName,
+                    NationalId = model.NationalId,
                     NormalizedUserName = model.UserName.ToUpper(),
                     Email = model.Email,
+                    NormalizedEmail = model.Email.ToUpper(),
                     EmailConfirmed = true,
                     PhoneNumber = model.PhoneNumber,
-                    PhoneNumberConfirmed = true
+                    PhoneNumberConfirmed = true,
+                    CreatedOn = DateTime.Now,
+                    CreatedById = "Vinit Ahir",
+                    RoleId = model.RoleId, // Ensure RoleId is assigned
                 };
 
                 // Create the user in the database
                 var result = await _userManager.CreateAsync(user, model.Password);
 
-                // Check if the user creation was successful
                 if (result.Succeeded)
                 {
-                    // Optionally add a role or other properties here
-                    // await _userManager.AddToRoleAsync(user, "User");
+                    // Assign the role to the user
+                    var role = await _roleManager.FindByIdAsync(model.RoleId);
+                    if (role != null)
+                    {
+                        await _userManager.AddToRoleAsync(user, role.Name);
+                    }
 
-                    // Redirect to the Index action or a success page
                     TempData["SuccessMessage"] = "User created successfully!";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    // Add validation errors if user creation fails
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
@@ -92,8 +97,10 @@ namespace EmployeeManagementSystem.Controllers
                 }
             }
 
-            // If we got here, something went wrong, so show the form again
+            // Repopulate Role Dropdown
+            ViewData["RoleId"] = new SelectList(await _roleManager.Roles.ToListAsync(), "Id", "Name", model.RoleId);
             return View(model);
         }
+
     }
 }

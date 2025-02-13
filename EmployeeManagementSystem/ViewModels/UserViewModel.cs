@@ -1,22 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagementSystem.ViewModels
 {
     public class UserViewModel
     {
-        //[Required]
+   
         public int ?Id { get; set; }
 
-        [Required]
+        [DisplayName("Email Address")]
         public string Email { get; set; }
 
-        //[Required]
+      
+        [DisplayName("First Name")]
         public string? FirstName { get; set; }
 
-        //[Required]
+     
+        [DisplayName("Middle Name")]
         public string? MiddleName { get; set; }
 
-        //[Required]
+       
+        [DisplayName("Last Name")]
         public string? LastName { get; set; }
 
         [Required]
@@ -24,16 +28,23 @@ namespace EmployeeManagementSystem.ViewModels
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [DisplayName("Password")]
         public string Password { get; set; }
 
-        //[Required]
+        [DisplayName("Address")]
 
         public string? Address { get; set; }
 
-        [Required]
+        [DisplayName("User Name")]
         public string UserName { get; set; }
 
-        
+        [DisplayName("National Id")]
+        public string? NationalId { get; set; }
+
+        public string? FullName => $"{FirstName} {MiddleName} {LastName}";
+
+        [DisplayName("User Role")]
+        public string? RoleId { get; set; }
+
     }
 }
