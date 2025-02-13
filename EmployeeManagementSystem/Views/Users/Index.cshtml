@@ -1,76 +1,166 @@
-﻿@using Microsoft.AspNetCore.Identity;
-
-@model IEnumerable<ApplicationUser>
+﻿@model IEnumerable<EmployeeManagementSystem.ViewModels.UserViewModel>
 
 @{
-	ViewData["Title"] = "System Users";
+    ViewData["Title"] = "System Users";
 }
 
+<h2>Users List</h2>
 
 <p>
-	<a asp-action="Create" class="btn btn-primary"> <i class="fa fa-plus"></i>Add New User</a>
+    <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i> Add New User</a>
 </p>
+
 <div class="card">
-	<div class="card-header">
-		<h3 class="card-title">Users List</h3>
-	</div>
-	<div class="card-body">
-
-		<table id="example1" class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>
-					     User Serial No
-					</th>
-
-					<th>
-						User Email
-					</th>
-					<th>
-					     User Name
-					</th>
-					<th>
-						User PhoneNo
-					</th>
-
-					<th>Actions</th>
-
-				</tr>
-			</thead>
-			<tbody>
-                @foreach (var item in Model)
+    <div class="card-header">
+        <h3 class="card-title">Users List</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>National ID</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    int count = 1;
+                    foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@user.FullName</td>
+                            <td>@user.NationalId</td>
+                            <td>@user.Role</td>
+                            <td>@user.Email</td>
+                            <td>@user.UserName</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-warning"><i class="fa fa-eye"></i> View</a>
+                                <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td>@item.Id</td>
-                        <td>@item.NormalizedEmail</td>
-                        <td>@item.NormalizedUserName</td>
-                        <td>@item.PhoneNumber</td>
-                        <td>
-                            <div class="input-group input-group-lg">
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">
-                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li class="dropdown-item">
-                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa fa-eye"></i>View</a>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li class="dropdown-item">
-                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</a>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
+                        <td colspan="8" class="text-center text-danger">No users found.</td>
                     </tr>
                 }
-			</tbody>
-		</table>
-	</div>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+
+
+@*     @using Microsoft.AspNetCore.Identity;
+
+    @model IEnumerable<ApplicationUser>
+
+    @{
+	    ViewData["Title"] = "System Users";
+    }
+
+
+    <p>
+	    <a asp-action="Create" class="btn btn-primary"> <i class="fa fa-plus"></i>Add New User</a>
+    </p>
+    <div class="card">
+	    <div class="card-header">
+		    <h3 class="card-title">Users List</h3>
+	    </div>
+	    <div class="card-body">
+
+		    <table id="example1" class="table table-bordered table-striped">
+			    <thead>
+				    <tr>
+					    <th>
+					         User Serial No
+					    </th>
+                        <th>
+                            FullName
+                        </th>
+                        <th>
+                            Id No
+                        </th>
+                        <th>
+                            User Role
+                        </th>
+					    <th>
+						    User Email
+					    </th>
+					    <th>
+					         User Name
+					    </th>
+					    <th>
+						    User PhoneNo
+					    </th>
+
+					    <th>Actions</th>
+
+				    </tr>
+			    </thead>
+			    <tbody>
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.FullName</td>
+                                <td>@item.NationalId</td>
+                                <td>@item.Role?.Name</td>  
+                                <td>@item.NormalizedEmail</td>
+                                <td>@item.NormalizedUserName</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                                Action
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li class="dropdown-item">
+                                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa fa-eye"></i>View</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li class="dropdown-item">
+                                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="8" class="text-center text-danger">No users found.</td></tr>
+                    }
+
+
+			    </tbody>
+		    </table>
+	    </div>
+    </div> 
+
+
+   *@

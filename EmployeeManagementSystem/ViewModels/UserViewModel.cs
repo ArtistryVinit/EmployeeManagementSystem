@@ -6,9 +6,9 @@ namespace EmployeeManagementSystem.ViewModels
     public class UserViewModel
     {
    
-        public int ?Id { get; set; }
+        public string ?Id { get; set; }
 
-        [DisplayName("Email Address")]
+        //[DisplayName("Email Address")]
         public string Email { get; set; }
 
       
@@ -35,16 +35,16 @@ namespace EmployeeManagementSystem.ViewModels
 
         public string? Address { get; set; }
 
-        [DisplayName("User Name")]
+        //[DisplayName("User Name")]
         public string UserName { get; set; }
 
-        [DisplayName("National Id")]
+        //[DisplayName("National Id")]
         public string? NationalId { get; set; }
 
-        public string? FullName => $"{FirstName} {MiddleName} {LastName}";
+        public string? FullName { get; set; }
 
         [DisplayName("User Role")]
         public string? RoleId { get; set; }
-
+        public string? Role { get; internal set; }
     }
 }
