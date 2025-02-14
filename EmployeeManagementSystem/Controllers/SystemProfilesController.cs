@@ -72,6 +72,24 @@ namespace EmployeeManagementSystem.Controllers
         }
 
 
+        //// GET: SystemProfiles/Edit/5
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var systemProfile = await _context.systemProfiles.FindAsync(id);
+        //    if (systemProfile == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    ViewData["ProfileId"] = new SelectList(_context.systemProfiles, "Id", "Name", systemProfile.ProfileId);
+        //    return View(systemProfile);
+        //}
+
         // GET: SystemProfiles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,9 +104,12 @@ namespace EmployeeManagementSystem.Controllers
                 return NotFound();
             }
 
+            // Populate dropdown
             ViewData["ProfileId"] = new SelectList(_context.systemProfiles, "Id", "Name", systemProfile.ProfileId);
+
             return View(systemProfile);
         }
+
 
         // POST: SystemProfiles/Edit/5
         [HttpPost]
