@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.SystemProfile>
+
+@{
+	ViewData["Title"] = "System Profiles";
+}
+<p>
+	<a asp-action="Create" class="btn btn-primary"> <i class="fa fa-plus"></i> Add New Employee</a>
+</p>
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">System Profiles</h3>
+	</div>
+	<div class="card-body">
+		<table id="example1" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Profile</th>
+					<th>Order</th>
+					<th>CreatedById</th>
+					<th>CreatedOn</th>
+					<th>ModifiedById</th>
+					<th>ModifiedOn</th>
+				s
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.Name</td>
+						<td>@item.Profile?.Name</td>
+						<td>
+							<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+							<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

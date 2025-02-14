@@ -15,6 +15,13 @@ namespace EmployeeManagementSystem.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
+            modelBuilder.Entity<SystemProfile>()
+        .HasOne(p => p.Profile)
+        .WithMany(p => p.Children)
+        .HasForeignKey(p => p.ProfileId)
+        .OnDelete(DeleteBehavior.Restrict); // Prevents cascading delete loop
+
             // Disable cascade delete to prevent multiple cascade paths
             modelBuilder.Entity<LeaveApplication>()
                 .HasOne(l => l.Status)
@@ -48,6 +55,8 @@ namespace EmployeeManagementSystem.Data
         public DbSet<City> cities { get; set; }
 
         public DbSet<LeaveApplication> leaveApplications { get; set; }
+
+        public DbSet<SystemProfile> systemProfiles { get; set; }
 
     }
 }
