@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.Models;
+using System.Security.Claims;
 
 namespace EmployeeManagementSystem.Controllers
 {
@@ -98,7 +99,12 @@ namespace EmployeeManagementSystem.Controllers
             {
                 try
                 {
-                    _context.Update(leaveType);
+                    var Userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    //Get Old Values
+                    var oldleavetype = await _context.leaveTypes.FindAsync(id);
+                    leaveType.ModifiedOn = DateTime.Now;
+                    leaveType.ModifiedById = Userid;
+                    _context.Entry(leaveType).CurrentValues.SetValues(leaveType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -145,8 +151,8 @@ namespace EmployeeManagementSystem.Controllers
             {
                 _context.leaveTypes.Remove(leaveType);
             }
-
-            await _context.SaveChangesAsync();
+            var Userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await _context.SaveChangesAsync(Userid);
             return RedirectToAction(nameof(Index));
         }
 
