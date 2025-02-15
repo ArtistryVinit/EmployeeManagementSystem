@@ -27,7 +27,10 @@ namespace EmployeeManagementSystem.Controllers
                 .Include(l => l.Status)
                 .Where(l => l.StatusId == awaitingstatus!.Id);
 
+            //return View(await applicationDbContext.ToListAsync());
+
             return View(await applicationDbContext.ToListAsync());
+
         }
 
         //Approved Application

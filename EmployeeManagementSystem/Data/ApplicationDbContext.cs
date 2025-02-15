@@ -60,35 +60,100 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<Audit> auditLogs { get; set; }
 
-        public virtual async Task<int> SaveChangesAsync(string userId = null)
+        //public virtual async Task<int> SaveChangesAsync(string userId = null)
+        public virtual async Task<int> SaveChangesAsync(string userId = "System")
+
         {
             OnBeforeSavingChanges(userId);
             var result = await base.SaveChangesAsync();
             return result;
         }
 
+        //private void OnBeforeSavingChanges(string userId)
+        //{
+        //    ChangeTracker.DetectChanges();
+        //    var auditEntries = new List<AuditEntry>();
+        //    foreach(var entry in ChangeTracker.Entries())
+        //    {
+        //        if (entry.Entity is Audit || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged) continue;
+
+        //        var auditEntry = new AuditEntry(entry);
+        //        auditEntry.TableName = entry.Entity.GetType().Name;
+        //        auditEntry.UserId = userId;
+        //        auditEntries.Add(auditEntry);
+
+        //        foreach( var property in entry.Properties)
+        //        {
+        //            string propertyName = property.Metadata.Name;
+        //            if(property.Metadata.IsPrimaryKey())
+        //            {
+        //                auditEntry.KeyValues[propertyName] = property.CurrentValue;
+        //                continue;
+        //            }
+        //            switch(entry.State)
+        //            {
+        //                case EntityState.Added:
+        //                    auditEntry.AuditType = AuditType.Create;
+        //                    auditEntry.NewValues[propertyName] = property.CurrentValue;
+        //                    break;
+
+        //                case EntityState.Deleted:
+        //                    auditEntry.AuditType = AuditType.Delete;
+        //                    auditEntry.OldValues[propertyName] = property.CurrentValue;
+        //                    break;
+
+        //                case EntityState.Modified:
+        //                    if(property.IsModified) 
+        //                    {
+        //                        auditEntry.ChangedColumns.Add(propertyName);
+        //                        auditEntry.AuditType = AuditType.Update;
+        //                        auditEntry.OldValues[propertyName] = property.OriginalValue;
+        //                        auditEntry.NewValues[propertyName] = property.CurrentValue;
+        //                    }
+
+        //                    break;
+        //            }
+        //        }
+
+        //    }
+
+        //    foreach ( var auditentry in auditEntries )
+        //    {
+        //        auditLogs.Add(auditentry.ToAudit());
+        //    }
+        //}
+
         private void OnBeforeSavingChanges(string userId)
         {
+            userId ??= "System"; // Ensure UserId is not NULL
+
             ChangeTracker.DetectChanges();
             var auditEntries = new List<AuditEntry>();
-            foreach(var entry in ChangeTracker.Entries())
-            {
-                if (entry.Entity is Audit || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged) continue;
 
-                var auditEntry = new AuditEntry(entry);
-                auditEntry.TableName = entry.Entity.GetType().Name;
-                auditEntry.UserId = userId;
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                if (entry.Entity is Audit || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged)
+                    continue;
+
+                var auditEntry = new AuditEntry(entry)
+                {
+                    TableName = entry.Entity.GetType().Name,
+                    UserId = userId // Ensure UserId is set
+                };
+
                 auditEntries.Add(auditEntry);
 
-                foreach( var property in entry.Properties)
+                foreach (var property in entry.Properties)
                 {
                     string propertyName = property.Metadata.Name;
-                    if(property.Metadata.IsPrimaryKey())
+
+                    if (property.Metadata.IsPrimaryKey())
                     {
                         auditEntry.KeyValues[propertyName] = property.CurrentValue;
                         continue;
                     }
-                    switch(entry.State)
+
+                    switch (entry.State)
                     {
                         case EntityState.Added:
                             auditEntry.AuditType = AuditType.Create;
@@ -101,25 +166,24 @@ namespace EmployeeManagementSystem.Data
                             break;
 
                         case EntityState.Modified:
-                            if(property.IsModified) 
+                            if (property.IsModified)
                             {
                                 auditEntry.ChangedColumns.Add(propertyName);
                                 auditEntry.AuditType = AuditType.Update;
                                 auditEntry.OldValues[propertyName] = property.OriginalValue;
                                 auditEntry.NewValues[propertyName] = property.CurrentValue;
                             }
-                            
                             break;
                     }
                 }
-                  
             }
 
-            foreach ( var auditentry in auditEntries )
+            foreach (var auditEntry in auditEntries)
             {
-                auditLogs.Add(auditentry.ToAudit());
+                auditLogs.Add(auditEntry.ToAudit());
             }
         }
+
 
     }
 }

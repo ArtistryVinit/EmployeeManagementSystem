@@ -58,7 +58,10 @@ namespace EmployeeManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(leaveType);
-                await _context.SaveChangesAsync();
+                // await _context.SaveChangesAsync();
+                
+                await _context.SaveChangesAsync("someUserId"); // Replace with actual user ID
+
                 return RedirectToAction(nameof(Index));
             }
             return View(leaveType);
