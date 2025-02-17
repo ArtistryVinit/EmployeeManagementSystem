@@ -1,0 +1,20 @@
+﻿@model EmployeeManagementSystem.Models.SystemProfile
+
+@{
+    ViewData["Title"] = "Profile Details";
+}
+
+<h2>Profile Details</h2>
+
+<div>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>Profile:</strong> @Model.Profile?.Name</p>
+    <p><strong>Order:</strong> @Model.Order</p>
+    <p><strong>CreatedById:</strong> @Model.CreatedById</p>
+    <p><strong>CreatedOn:</strong> @Model.CreatedOn</p>
+    <p><strong>ModifiedOn:</strong> @Model.ModifiedOn</p>
+</div>
+
+@* <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> *@
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

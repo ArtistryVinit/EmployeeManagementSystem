@@ -1,0 +1,27 @@
+﻿@model EmployeeManagementSystem.ViewModels.RolesViewModel
+
+@{
+    ViewData["Title"] = "Delete Role";
+}
+
+<hr />
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Delete Role</h3>
+    </div>
+
+    <div class="card-body">
+        <p>Are you sure you want to delete the role "<strong>@Model.RoleName</strong>"?</p>
+
+        <form asp-action="DeleteConfirmed" method="post">
+            <input type="hidden" asp-for="Id" />
+            @Html.AntiForgeryToken()
+
+            <div class="card-footer">
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Delete Role" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>

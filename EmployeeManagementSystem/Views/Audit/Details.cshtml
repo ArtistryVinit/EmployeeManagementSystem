@@ -1,0 +1,36 @@
+﻿@model EmployeeManagementSystem.Models.Audit
+
+@{
+    ViewData["Title"] = "Audit Log Details";
+}
+
+<h2>Audit Log Details</h2>
+
+<div>
+    <h4>Audit Entry</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Table Name:</dt>
+        <dd class="col-sm-10">@Model.TableName</dd>
+
+        <dt class="col-sm-2">User ID:</dt>
+        <dd class="col-sm-10">@Model.UserId</dd>
+
+        <dt class="col-sm-2">Audit Type:</dt>
+        <dd class="col-sm-10">@Model.AuditType</dd>
+
+       @*  <dt class="col-sm-2">Created On:</dt>
+        <dd class="col-sm-10">@Model.CreatedOn</dd> *@
+
+        <dt class="col-sm-2">Old Values:</dt>
+        <dd class="col-sm-10">@Model.OldValues</dd>
+
+        <dt class="col-sm-2">New Values:</dt>
+        <dd class="col-sm-10">@Model.NewValues</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

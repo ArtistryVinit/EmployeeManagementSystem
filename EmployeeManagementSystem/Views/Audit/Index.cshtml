@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.Audit>
+
+@{
+    ViewData["Title"] = "System Audit Logs";
+}
+
+<h2>Audit Logs</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">System Audit Log List</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Table Name</th>
+            <th>User ID</th>
+            <th>Audit Type</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TableName</td>
+                <td>@item.UserId</td>
+                <td>@item.AuditType</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
