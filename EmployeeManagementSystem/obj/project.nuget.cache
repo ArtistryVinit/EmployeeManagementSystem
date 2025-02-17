@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dJ2V2wWl1P8=",
+  "dgSpecHash": "il/wLc18OVE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\vinit\\source\\repos\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
+  "projectFilePath": "C:\\Collage Project\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vinit\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\vinit\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
