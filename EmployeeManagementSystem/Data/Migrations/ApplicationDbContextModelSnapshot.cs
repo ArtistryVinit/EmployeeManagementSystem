@@ -147,7 +147,10 @@ namespace EmployeeManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimaryKey")
+<<<<<<< HEAD
                         .IsRequired()
+=======
+>>>>>>> first-r/main
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TableName")

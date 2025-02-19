@@ -17,7 +17,11 @@
 
         public string? AffectedColumns { get; set; }
 
+<<<<<<< HEAD
         public string PrimaryKey { get; set; }
+=======
+        public string? PrimaryKey { get; set; }
+>>>>>>> first-r/main
     }
 
     public enum AuditType
