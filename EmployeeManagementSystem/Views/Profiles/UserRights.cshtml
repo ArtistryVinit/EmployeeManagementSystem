@@ -47,11 +47,20 @@
                                                 <th></th>
                                                 <td>@actions.Name</td>
                                                 <td>
-                                                    <label>
-                                                        <input type="checkbox" name="Ids[]" value="@actions.Id" />
-                                                    </label>
-                                                </td> 
+                                                    @if(Model.RolesRightsIds.Contains(actions.Id))
+                                                    {
+                                                        <label>
+                                                            <input type="checkbox" name="Ids[]" value="@actions.Id" checked="checked"/>
+                                                        </label>
 
+                                                    }
+                                                    else
+                                                    {
+                                                        <label>
+                                                            <input type="checkbox" name="Ids[]" value="@actions.Id" />
+                                                        </label>
+                                                    }
+                                                 </td> 
                                              </tr>
                                         }
                                     }
@@ -79,45 +88,4 @@
 
 
 
- @* @model EmployeeManagementSystem.ViewModels.ProfileViewModel
-
-@{
-    ViewData["Title"] = "Manage User Rights";
-}
-
-<h2>Manage User Rights</h2>
-
-<form asp-action="UserGroupRights" method="post">
-    <input type="hidden" name="id" value="@Model.RoleId" />
-
-    <div class="form-group">
-        <label for="RoleId">Role:</label>
-        <input type="text" class="form-control" value="@Model.RoleId" readonly />
-    </div>
-
-    <div class="form-group">
-        <label>Available Tasks:</label>
-        <select multiple class="form-control" name="Ids">
-            @foreach (var task in Model.Profiles)
-            {
-                <option value="@task.Id" selected="@(Model.RolesProfilesIds.Contains(task.Id))">
-                    @task.Name
-                </option>
-            }
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-</form>
-
-@if (!ViewData.ModelState.IsValid)
-{
-    <div class="alert alert-danger mt-3">
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-    </div>
-}
-
-<div class="mt-4">
-    <a asp-action="Index" class="btn btn-secondary">Back to Profiles</a>
-</div>
- *@
+ 

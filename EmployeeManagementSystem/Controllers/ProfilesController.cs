@@ -71,7 +71,7 @@ namespace EmployeeManagementSystem.Controllers
 
             tasks.Profiles = systemtasks;
 
-            tasks.RolesProfilesIds = await _context.RoleProfiles
+            tasks.RolesRightsIds = await _context.RoleProfiles
                 .Where(x => x.RoleId == id)
                 .Select(r => r.TaskId)
                 .ToListAsync();
@@ -83,6 +83,11 @@ namespace EmployeeManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> UserGroupRights(string id, ProfileViewModel vm)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("Role ID is required.");
+            }
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             // Check if vm.Ids has values
@@ -92,21 +97,35 @@ namespace EmployeeManagementSystem.Controllers
                 return View(vm); // Return view with validation message
             }
 
-            foreach (var taskId in vm.Ids)
+            try
             {
-                var roleProfile = new RoleProfile
+                // Remove existing RoleProfiles for this RoleId to avoid duplicates
+                var existingRights = await _context.RoleProfiles
+                                                  .Where(x => x.RoleId == id)
+                                                  .ToListAsync();
+                _context.RoleProfiles.RemoveRange(existingRights);
+
+                // Add new RoleProfiles
+                var newRoleProfiles = vm.Ids.Select(taskId => new RoleProfile
                 {
                     TaskId = taskId,
                     RoleId = id
-                };
+                }).ToList();
 
-                _context.RoleProfiles.Add(roleProfile);
+                _context.RoleProfiles.AddRange(newRoleProfiles);
+                await _context.SaveChangesAsync(); // Save changes in a single transaction
+
+                TempData["SuccessMessage"] = "User group rights updated successfully.";
+                return RedirectToAction("UserRights", new { id }); // ✅ Redirect to avoid duplicate form submission
             }
-
-            await _context.SaveChangesAsync(); // ✅ Corrected SaveChangesAsync
-
-            return RedirectToAction("UserRights", new { id }); // ✅ Redirect to avoid duplicate form submission
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "An error occurred while updating rights. Please try again.");
+                // Optionally log the error: _logger.LogError(ex, "Error updating user group rights");
+                return View(vm);
+            }
         }
+
 
     }
 
@@ -121,134 +140,5 @@ namespace EmployeeManagementSystem.Controllers
 
 
 
-
-
-//try code controller
-//using EmployeeManagementSystem.Data;
-//using EmployeeManagementSystem.Models;
-//using EmployeeManagementSystem.ViewModels;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc.Rendering;
-//using Microsoft.EntityFrameworkCore;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Security.Claims;
-//using System.Threading.Tasks;
-
-//namespace EmployeeManagementSystem.Controllers
-//{
-//    public class ProfilesController : Controller
-//    {
-//        private readonly ApplicationDbContext _context;
-
-//        public ProfilesController(ApplicationDbContext context)
-//        {
-//            _context = context;
-//        }
-
-//        public async Task<IActionResult> Index()
-//        {
-//            var viewModel = new ProfileViewModel
-//            {
-//                Profiles = await _context.systemProfiles
-//                    .Include(t => t.Children)
-//                    .ThenInclude(c => c.Children)
-//                    .ThenInclude(gc => gc.Children)
-//                    .OrderBy(x => x.Order)
-//                    .ToListAsync()
-//            };
-
-//            ViewBag.Roles = new SelectList(await _context.Roles.OrderBy(x => x.Name).ToListAsync(), "Id", "Name");
-//            ViewBag.Tasks = new SelectList(viewModel.Profiles, "Id", "Name");
-
-//            return View(viewModel);
-//        }
-
-//        [HttpPost]
-//        public async Task<IActionResult> AssignRights(ProfileViewModel vm)
-//        {
-//            if (vm.TaskId == null || vm.RoleId == null)
-//            {
-//                ModelState.AddModelError("", "Task and Role must be selected.");
-//                return RedirectToAction("Index");
-//            }
-
-//            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//            var roleProfile = new RoleProfile
-//            {
-//                TaskId = vm.TaskId,
-//                RoleId = vm.RoleId
-//            };
-
-//            _context.RoleProfiles.Add(roleProfile);
-//            await _context.SaveChangesAsync(); // ✅ Removed parameter (not needed)
-
-//            return RedirectToAction("Index");
-//        }
-
-//        [HttpGet]
-//        public async Task<IActionResult> UserRights(string id)
-//        {
-//            if (string.IsNullOrEmpty(id))
-//            {
-//                return BadRequest("Role ID is required.");
-//            }
-
-//            var systemProfiles = await _context.systemProfiles
-//                .Include(s => s.Profile)
-//                .Include(s => s.Children)
-//                .ThenInclude(c => c.Children)
-//                .ThenInclude(gc => gc.Children)
-//                .OrderBy(x => x.Order)
-//                .ToListAsync();
-
-//            var viewModel = new ProfileViewModel
-//            {
-//                RoleId = id,
-//                Profiles = systemProfiles,
-//                RolesProfilesIds = await _context.RoleProfiles
-//                    .Where(x => x.RoleId == id)
-//                    .Select(r => r.TaskId)
-//                    .ToListAsync()
-//            };
-
-//            ViewBag.Tasks = new SelectList(systemProfiles, "Id", "Name");
-
-//            return View(viewModel);
-//        }
-
-//        [HttpPost]
-//        public async Task<IActionResult> UserGroupRights(string id, ProfileViewModel vm)
-//        {
-//            if (string.IsNullOrEmpty(id))
-//            {
-//                return BadRequest("Role ID is required.");
-//            }
-
-//            if (vm.Ids == null || !vm.Ids.Any())
-//            {
-//                ModelState.AddModelError("", "No tasks selected.");
-//                return View(vm);
-//            }
-
-//            var existingRoleProfiles = await _context.RoleProfiles
-//                .Where(rp => rp.RoleId == id)
-//                .ToListAsync();
-
-//            _context.RoleProfiles.RemoveRange(existingRoleProfiles);
-
-//            var newRoleProfiles = vm.Ids.Select(taskId => new RoleProfile
-//            {
-//                TaskId = taskId,
-//                RoleId = id
-//            });
-
-//            await _context.RoleProfiles.AddRangeAsync(newRoleProfiles);
-//            await _context.SaveChangesAsync();
-
-//            return RedirectToAction("UserRights", new { id });
-//        }
-//    }
-//}
 
 

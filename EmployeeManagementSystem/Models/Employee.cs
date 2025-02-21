@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagementSystem.Models
 {
@@ -7,16 +8,16 @@ namespace EmployeeManagementSystem.Models
       
         public int Id { get; set; }
 
-     
+  
         public string EmpNo { get; set; }
-        
-       
+
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
 
-      
+        [DisplayName("Middle Name")]
         public string MiddleName { get; set; }
 
-       
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
 
         public string FullName => $"{FirstName} {MiddleName} {LastName}";
@@ -24,13 +25,18 @@ namespace EmployeeManagementSystem.Models
         [Required]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number must be exactly 10 digits.")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
+
+        [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
 
-      
+        [DisplayName("Email Address")]
         public string EmailAddress { get; set; }
 
-      
-        public string Country { get; set; }
+        [DisplayName("Country Name")]
+        public int? CountryId { get; set; }
+
+       
+        public Country Country {  get; set; }
 
      
         public DateTime DateOfBirth { get; set; }
@@ -38,12 +44,21 @@ namespace EmployeeManagementSystem.Models
        
         public string Address { get; set; }
 
-       
-        public string Department { get; set; }
+        [DisplayName("Department Name")]
+        public int? DepartmentId { get; set; }
 
-    
-        public string Designation { get; set; }
+     
+        public Department Department { get; set; }
 
+        [DisplayName("Designation Name")]
+        public int? DesignationId { get; set; }
+
+        public Designation Designation { get; set; }
+
+        [DisplayName("Gender Name")]
+        public int? GenderId { get; set; }
+
+        public SystemCodeDetail Gender { get; set; }
 
     }
 }

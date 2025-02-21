@@ -8,7 +8,7 @@ namespace EmployeeManagementSystem.ViewModels
     {
         public List<SystemProfile>? Profiles { get; set; }
 
-        public ICollection<int> RolesProfilesIds { get; set; }
+        public ICollection<int> RolesRightsIds { get; set; }
 
         public int[] Ids { get; set; }
 
