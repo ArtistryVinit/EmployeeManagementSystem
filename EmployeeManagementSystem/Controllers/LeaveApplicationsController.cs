@@ -40,21 +40,34 @@ namespace EmployeeManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,LeaveTypeId,NumberOfDays,StartDate,EndDate,Description,Attachment")] LeaveApplication leaveApplication)
+        public async Task<IActionResult> Create([Bind("EmployeeId,LeaveTypeId,NumberOfDays,StartDate,EndDate,Description")] LeaveApplication leaveApplication)
         {
+            if (!ModelState.IsValid)
+            {
+                // Log validation errors to console or file
+                foreach (var key in ModelState.Keys)
+                {
+                    foreach (var error in ModelState[key].Errors)
+                    {
+                        Console.WriteLine($"Validation Error - Field: {key}, Message: {error.ErrorMessage}");
+                    }
+                }
+
+                ModelState.AddModelError("", "There was a validation error. Please check all fields.");
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Add leave application to database
                     _context.Add(leaveApplication);
                     await _context.SaveChangesAsync();
-
                     TempData["SuccessMessage"] = "Leave application submitted successfully!";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine($"Exception: {ex.Message}");
                     ModelState.AddModelError("", "Error saving data: " + ex.Message);
                 }
             }
@@ -65,6 +78,7 @@ namespace EmployeeManagementSystem.Controllers
 
             return View(leaveApplication);
         }
+
 
 
         // GET: LeaveApplications/Edit/5

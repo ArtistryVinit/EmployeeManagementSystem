@@ -60,6 +60,8 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<Audit> auditLogs { get; set; }
 
+        public DbSet<RoleProfile> RoleProfiles { get; set; }
+
         //public virtual async Task<int> SaveChangesAsync(string userId = null)
         public virtual async Task<int> SaveChangesAsync(string userId = "System")
 
