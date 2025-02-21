@@ -29,6 +29,7 @@ namespace EmployeeManagementSystem.Controllers
             return View(leaveApplications);
         }
 
+
         //this is leave application create method.
         public IActionResult Create()
         {
@@ -78,7 +79,6 @@ namespace EmployeeManagementSystem.Controllers
 
             return View(leaveApplication);
         }
-
 
 
         // GET: LeaveApplications/Edit/5

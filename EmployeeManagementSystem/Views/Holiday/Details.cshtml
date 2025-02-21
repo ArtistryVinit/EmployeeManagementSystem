@@ -1,0 +1,13 @@
+﻿@model EmployeeManagementSystem.Models.Holiday
+
+<h2>Holiday Details</h2>
+
+<div>
+    <p><strong>Title:</strong> @Model.Title</p>
+    <p><strong>Start Date:</strong> @Model.StartDate.ToShortDateString()</p>
+    <p><strong>End Date:</strong> @Model.EndDate.ToShortDateString()</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

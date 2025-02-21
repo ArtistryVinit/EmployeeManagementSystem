@@ -1,4 +1,4 @@
-﻿@model EmployeeManagementSystem.Models.LeaveApplication
+﻿@* @model EmployeeManagementSystem.Models.LeaveApplication
 
 <h2>Apply for Leave</h2>
 
@@ -43,3 +43,77 @@
     <button type="submit" class="btn btn-primary">Submit</button>
     <button type="submit" class="btn btn-danger">Back to the List</button>
 </form>
+ *@
+
+@*  after update code *@
+    @model EmployeeManagementSystem.Models.LeaveApplication
+
+<h2>Create Leave Application</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="EmployeeId"></label>
+        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+            <option value="">-- Select Employee --</option>
+        </select>
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LeaveTypeId"></label>
+        <select asp-for="LeaveTypeId" class="form-control" asp-items="ViewBag.LeaveTypeId">
+            <option value="">-- Select Leave Type --</option>
+        </select>
+        <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StartDate"></label>
+        <input asp-for="StartDate" class="form-control" type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EndDate"></label>
+        <input asp-for="EndDate" class="form-control" type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumberOfDays"></label>
+        <input asp-for="NumberOfDays" class="form-control" />
+        <span asp-validation-for="NumberOfDays" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DurationId"></label>
+        <select asp-for="DurationId" class="form-control" asp-items="ViewBag.DurationId">
+            <option value="">-- Select Duration --</option>
+        </select>
+        <span asp-validation-for="DurationId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StatusId"></label>
+        <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId">
+            <option value="">-- Select Status --</option>
+        </select>
+        <span asp-validation-for="StatusId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Attachment"></label>
+        <input asp-for="Attachment" class="form-control" type="text" />
+        <span asp-validation-for="Attachment" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

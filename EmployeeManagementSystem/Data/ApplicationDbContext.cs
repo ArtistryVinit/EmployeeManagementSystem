@@ -62,6 +62,8 @@ namespace EmployeeManagementSystem.Data
 
         public DbSet<RoleProfile> RoleProfiles { get; set; }
 
+        public DbSet<Holiday> Holidays { get; set; }
+
         //public virtual async Task<int> SaveChangesAsync(string userId = null)
         public virtual async Task<int> SaveChangesAsync(string userId = "System")
 

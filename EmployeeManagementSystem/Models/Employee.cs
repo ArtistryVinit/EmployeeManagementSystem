@@ -22,6 +22,8 @@ namespace EmployeeManagementSystem.Models
 
         public string FullName => $"{FirstName} {MiddleName} {LastName}";
 
+        //public string FullName { get; set; } // Ensure this exists
+
         [Required]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number must be exactly 10 digits.")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
