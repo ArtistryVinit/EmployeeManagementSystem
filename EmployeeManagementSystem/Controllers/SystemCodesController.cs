@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.Models;
+using System.Security.Claims;
 
 namespace EmployeeManagementSystem.Controllers
 {
@@ -50,17 +51,19 @@ namespace EmployeeManagementSystem.Controllers
         }
 
         // POST: SystemCodes/Create
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)
+        public async Task<IActionResult> Create(SystemCode systemCode)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(systemCode);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            var Userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            systemCode.CreatedOn = DateTime.Now;
+            systemCode.CreatedById = Userid;
+
+            _context.Add(systemCode);
+            await _context.SaveChangesAsync(Userid);
+            return RedirectToAction(nameof(Index));
+
             return View(systemCode);
         }
 
@@ -81,7 +84,7 @@ namespace EmployeeManagementSystem.Controllers
         }
 
         // POST: SystemCodes/Edit/5
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Description,CreatedById,CreatedOn,ModifiedById,ModifiedOn")] SystemCode systemCode)

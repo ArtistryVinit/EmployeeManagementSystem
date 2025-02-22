@@ -1,77 +1,43 @@
-﻿ @model IEnumerable<EmployeeManagementSystem.Models.LeaveApplication>
+﻿@model IEnumerable<EmployeeManagementSystem.Models.LeaveApplication>
 
 @{
     ViewData["Title"] = "Leave Applications";
 }
 
+<a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i>Add New LeaveApplication</a>
+
 <h2>Leave Applications</h2>
+<hr />
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Apply for Leave</a>
-</p>
-
-<table class="table table-striped">
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Employee.FullName)</th>
-            <th>@Html.DisplayNameFor(model => model.LeaveType.Name)</th>
-            <th>@Html.DisplayNameFor(model => model.NumberOfDays)</th>
-            <th>@Html.DisplayNameFor(model => model.StartDate)</th>
-            <th>@Html.DisplayNameFor(model => model.EndDate)</th>
-            <th>@Html.DisplayNameFor(model => model.Status.Name)</th>
+            <th>Employee Name</th>
+            <th>Leave Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Number of Days</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@(item.Employee?.FullName ?? "N/A")</td>
-            <td>@(item.LeaveType?.Name ?? "N/A")</td>
-            <td>@item.NumberOfDays</td>
-            <td>@item.StartDate.ToShortDateString()</td>
-            <td>@item.EndDate.ToShortDateString()</td>
-            <td>@(item.Status?.Name ?? "N/A")</td>
-            <td>
+        @foreach (var leave in Model)
+        {
+            <tr>
+                <td>@leave.Employee.FullName</td>
+                <td>@leave.LeaveType.Name</td>
+                <td>@leave.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@leave.EndDate.ToString("yyyy-MM-dd")</td>
+                <td>@leave.NumberOfDays</td>
+                <td>@leave.Status.Name</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                    <a asp-action="ApprovedLeaveApplications" class="btn btn-success">View Approved Leaves</a>
-                    <a asp-action="RejectedLeaveApplications" class="btn btn-danger">View Rejected Leaves</a>
-
-
+                    <a asp-action="Edit" asp-route-id="@leave.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@leave.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
-
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-
-                        @if (item.StatusId != 2) // Assuming 2 is the "Approved" status
-                        {
-                        <a asp-action="ApproveLeave" asp-route-id="@item.Id" class="btn btn-success">Approve</a>
-                        }
-
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                </td>
-
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-
-                        @if (item.StatusId != 2 && item.StatusId != 3) // Ensure it's not already Approved (2) or Rejected (3)
-                        {
-                        <a asp-action="ApproveLeave" asp-route-id="@item.Id" class="btn btn-success">Approve</a>
-                        <a asp-action="RejectLeave" asp-route-id="@item.Id" class="btn btn-danger">Reject</a>
-                        }
-
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Delete</a>
-                </td>
-
-
-        </tr>
-    }
-</tbody>
-
+            </tr>
+        }
+    </tbody>
 </table>
- 
+
+<a asp-action="Create" class="btn btn-success">Apply for Leave</a>

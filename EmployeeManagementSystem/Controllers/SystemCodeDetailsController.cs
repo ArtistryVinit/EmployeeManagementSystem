@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.Models;
+using EmployeeManagementSystem.Data.Migrations;
+using System.Security.Claims;
 
 namespace EmployeeManagementSystem.Controllers
 {
@@ -58,9 +60,12 @@ namespace EmployeeManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SystemCodeDetail systemCodeDetail)
         {
+            var Userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            systemCodeDetail.CreatedOn = DateTime.Now;
+            systemCodeDetail.CreatedById = Userid;
 
             _context.Add(systemCodeDetail);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(Userid);
             return RedirectToAction(nameof(Index));
             ViewData["SystemCodeId"] = new SelectList(_context.SystemCodes, "Id", "Description", systemCodeDetail.SystemCodeId);
             return View(systemCodeDetail);

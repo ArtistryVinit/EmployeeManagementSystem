@@ -54,6 +54,9 @@ namespace EmployeeManagementSystem.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
+            ViewData["BankId"] = new SelectList(_context.banks, "Id", "Name");
+            ViewData["EmploymentTermsId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(x => x.SystemCode.Code == "EmploymentTerms"), "Id", "Description");
+
             ViewData["GenderId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(x => x.SystemCode.Code == "Gender"), "Id", "Description");
             ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name");
             ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Name");
@@ -98,7 +101,9 @@ namespace EmployeeManagementSystem.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
-            
+            ViewData["BankId"] = new SelectList(_context.banks, "Id", "Name",employee.BankId);
+            ViewData["EmploymentTermsId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(x => x.SystemCode.Code == "EmploymentTerms"), "Id", "Description",employee.BankId);
+
             ViewData["GenderId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(x => x.SystemCode.Code == "Gender"), "Id", "Description");
             ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name", employee.CountryId);
             ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Name", employee.DesignationId);
