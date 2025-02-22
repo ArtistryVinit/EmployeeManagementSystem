@@ -14,9 +14,11 @@ namespace EmployeeManagementSystem.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeesController(ApplicationDbContext context)
+        private readonly IConfiguration _configuration;
+        public EmployeesController(IConfiguration configuration,ApplicationDbContext context)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: Employees
@@ -25,7 +27,7 @@ namespace EmployeeManagementSystem.Controllers
             return View(await _context.Employees.ToListAsync());
         }
 
-        // GET: Employees/Details/5
+        //Details code
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,7 +36,12 @@ namespace EmployeeManagementSystem.Controllers
             }
 
             var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(e => e.Gender)      // Include Gender details
+                .Include(e => e.Department)  // Include Department details
+                .Include(e => e.Designation) // Include Designation details
+                .Include(e => e.Country)     // Include Country details
+                .FirstOrDefaultAsync(e => e.Id == id);
+
             if (employee == null)
             {
                 return NotFound();
@@ -42,6 +49,7 @@ namespace EmployeeManagementSystem.Controllers
 
             return View(employee);
         }
+
 
         // GET: Employees/Create
         public IActionResult Create()
@@ -57,8 +65,30 @@ namespace EmployeeManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Employee employee)
+        public async Task<IActionResult> Create(Employee employee,IFormFile employeephoto)
         {
+            if (employeephoto != null && employeephoto.Length > 0)
+            {
+                var filename = "EmployeePhoto_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + Path.GetFileName(employeephoto.FileName);
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", "EmployeePicture");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var filePath = Path.Combine(uploadsFolder, filename);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await employeephoto.CopyToAsync(stream);
+                }
+
+                employee.Photo = filename; // Save only the filename
+            }
+
+
+
+
             employee.CreatedById = "Vinit Ahir";
             employee.CreatedOn = DateTime.Now;
 
@@ -68,7 +98,7 @@ namespace EmployeeManagementSystem.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
-
+            
             ViewData["GenderId"] = new SelectList(_context.systemCodeDetails.Include(x => x.SystemCode).Where(x => x.SystemCode.Code == "Gender"), "Id", "Description");
             ViewData["CountryId"] = new SelectList(_context.countries, "Id", "Name", employee.CountryId);
             ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Name", employee.DesignationId);
